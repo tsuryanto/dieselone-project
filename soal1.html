@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            line-height: 12px;  
+        } 
+    </style>    
+</head>
+<body>
+
+    <script>
+        var value;    
+        pola();
+    
+        function pola(){
+            value = prompt("Masukkan bilangan bulat positif");
+            input = value*2+1;
+
+            var pengurang;
+            var isGenap = (value % 2 == 0) ? true : false;
+            if (isGenap)
+                var pembulatan = value/2 + 1;                                                                   
+            else 
+                var pembulatan = Math.ceil(value/2);                                     
+    
+            if (value > 0) {                    
+                for (let i = 1; i <= input; i++) {                                            
+                    
+                    if (i == 1 || i == input){
+                        for (let y = 1; y <= pembulatan; y++) {                        
+                            document.write('<font style="visibility:hidden;"> y </font>');                        
+                        }                    
+                        for (let x = 1; x <= value-pembulatan; x++) {                        
+                            document.write(" x ");                        
+                        }
+                        document.write(" x ");
+                        for (let x = 1; x <= value-pembulatan; x++) {                        
+                            document.write(" x ");                        
+                        }
+                        for (let y = 1; y <= pembulatan; y++) {                        
+                            document.write('<font style="visibility:hidden;"> y </font>');                        
+                        }
+                    }    
+                    
+                    else if (i < pembulatan){  
+                        pengurang = pembulatan - i;                            
+
+                        for (let y = 1; y <= pengurang; y++) {                        
+                            document.write('<font style="visibility:hidden;"> y </font>');                        
+                        }                    
+                        for (let x = 1; x <= value-pengurang; x++) {                                                    
+                            var tengah = (value*2)-(value-i);
+                            if (x == tengah-value){document.write(' x ');}
+                            else if (x == tengah){document.write(' x ');}                            
+                            else if (x <= 2){document.write(' x ');}
+                            else {document.write('<font style="visibility:hidden;"> y </font>');}
+                        }
+                        document.write(" x ");
+                        for (let x = 1; x <= value-pengurang; x++) {                        
+                            if (x == value-pengurang || x == value-pengurang-1){document.write(' x ');}
+                            else {document.write('<font style="visibility:hidden;"> y </font>');}                            
+                        }
+                        for (let y = 1; y <= pengurang; y++) {                        
+                            document.write('<font style="visibility:hidden;"> y </font>');                        
+                        }                        
+                    }
+                    
+                    else if (i == pembulatan){                                                
+                        for (let x = 1; x <= input; x++) {                        
+
+                            var tengah = (value*2)-(value-i);
+                            
+                            if (x == 2){document.write(' x ');}
+                            else if (x == input-value){document.write(' x ');}
+                            else if (x == input-1){document.write(' x ');}                                                        
+                            else if (x == tengah-value){document.write(' x ');}
+                            else if (x == tengah){document.write(' x ');}
+                            else {document.write('<font style="visibility:hidden;"> y </font>');}
+                            }                                
+                    }
+
+                    else if (i > pembulatan && i < input-value){                                                  
+                        for (let x = 1; x <= value; x++) {   
+                            var tengah = (value*2)-(value-i);
+
+                            if (x == 1){document.write(' x ');}
+                            else if (x == tengah-value){document.write(' x ');}
+                            else if (x == tengah){document.write(' x ');}                            
+                            else{
+                                document.write('<font style="visibility:hidden;"> y </font>');
+                            }                                
+                        }                                           
+                        document.write(' x ');     
+                    }                    
+
+                    else if(i == input-value){
+                        for (let x = 1; x <= input; x++) {                        
+                            document.write(' x ');                        
+                        }                           
+                    }
+
+                    document.write("<br>");
+                }                            
+    
+            } else {
+                alert("Maaf , anda harus menginput bilangan positif");            
+                pola();
+            }        
+        }
+
+        function validasi(i, pembulatan, view){
+            if (i == 1){
+                return true;
+            }            
+        }
+                        
+    </script>    
+    
+</body>
+</html>

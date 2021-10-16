@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            line-height: 12px;  
+        } 
+    </style>    
+</head>
+<body>
+
+    <script>
+    var hasil = [];    
+    // console.log(test);
+
+    var value;    
+        pola();
+    
+        function pola(){
+            value = prompt("Masukkan bilangan bulat positif");
+            var isGenap = (value % 2 == 0) ? true : false;
+
+            if (isGenap)
+                var pembulatan = value/2 + 1;                                                                   
+            else 
+                var pembulatan = Math.floor(value/2);                                                 
+
+            var valKosong = '<font style="visibility:hidden;"> y </font>';
+            var valIsi = ' x ';
+
+            var valueTengah = value*4 + 1;
+            var valueTotal = value**2 + valueTengah;
+
+            if (value > 0) {             
+    
+                // Buat sisi
+                for (let i = 1; i <= value**2; i++) {
+                    if (i <= value){
+                        hasil.push(valIsi);
+                    }                      
+                    else if (i % value == 1){
+                        hasil.push(valIsi);
+                    }                    
+                    else {
+                        hasil.push(valKosong);
+                    }
+                }            
+                console.log(hasil);
+
+                // Buat X diagonal
+                for (let diag = 0; diag < value; diag++) {                    
+                    key = (value*(value-diag)-diag);
+                    if (key > value){
+                        hasil[key-1] = valIsi;                 
+                    }                       
+                }
+                
+
+                // Hilangkan X
+                // for (let pb = 1; pb < pembulatan ; pb++) {
+                //     for (let s = ; s < pb-1; s++) {                        
+
+                //     }
+                    
+                //     // if (pb%pembulatan == 0){
+                //     //     // document.write(pb);
+                //     //     for (s = 0; s < pb; s++) {
+                //     //         const element = array[s];
+                            
+                //     //     }
+                //     // }                    
+                // }
+                
+                // for (let s = 0; s < pembulatan; s++) {
+                //     for (let j = pembulatan; j > s; j--) {
+                //         document.write(" " + (s*pembulatan + j) + " ");
+                //         hasil[s*pembulatan + j] = valKosong;  
+                //     }
+                //     document.write("<br>")
+                // }                
+
+                // Tampilkan Pola
+                for (let index = 0; index < hasil.length; index++) {
+                    const element = hasil[index];
+
+                    if (index % value == 0){
+                        document.write("<br>");    
+                    }
+                    document.write(element);
+                }         
+
+                var kiriAtas = hasil;
+                var kananAtas = [];
+
+                for (let index = 0; index > hasil.length; index--) {
+                    const element = hasil[index];
+                    kananAtas[index] = element;
+                }
+                   
+                
+            } 
+            else {
+                alert("Maaf , anda harus menginput bilangan positif");            
+                pola();                                
+            }
+        }
+
+    </script>    
+    
+</body>
+</html>
